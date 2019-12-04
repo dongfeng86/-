@@ -15,7 +15,7 @@ private:
 public:
 	CSeqentList();
 	CSeqentList(const CSeqentList & temp);
-	CSeqentList & operator=(const CSeqentList & temp);
+	const CSeqentList & operator=(const CSeqentList & temp);
 	~CSeqentList();
 
 	const T & operator[](int i) const;
@@ -25,7 +25,7 @@ public:
 	bool EraseAt(int i);
 	int GetCount() const;
 	template<class T,int n>
-	friend std::ostream & operator<<(std::ostream & os, const CSeqentList & temp);
+	friend std::ostream & operator<<(std::ostream & os, const CSeqentList<T,n> & temp);                 //注意，函数参数中CSeqentList<T,n>的尖括号不能省略
 };
 
 template<class T, int n>
@@ -46,10 +46,11 @@ inline CSeqentList<T, n>::CSeqentList(const CSeqentList & temp)
 }
 
 template<class T, int n>
-inline CSeqentList<T, n> & CSeqentList<T, n>::operator=(const CSeqentList<T, n> & temp)
+inline const CSeqentList<T, n> & CSeqentList<T, n>::operator=(const CSeqentList/*<T, n>*/ & temp)
 {
 	for (int i = 0; i < n; i++)
 		m_ar[i] = temp[i];
+	return temp;
 }
 
 template<class T, int n>
@@ -140,7 +141,7 @@ template<class T,int n>
 std::ostream & operator<<(std::ostream & os, const CSeqentList<T,n> & temp)
 {
 	for (int i = 0; i < temp.GetCount(); i++)
-		os << temp[i] << " ";
+		os << temp.m_ar[i] << " ";
 	return os;
 }
 
