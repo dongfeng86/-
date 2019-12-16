@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "如何查看运行时间", 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "顺序表", "顺序表\顺序表.vcxproj", "{17D130CE-BB21-4713-93E6-C22E2ACE274D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "队列模拟", "队列模拟\队列模拟.vcxproj", "{640B7DEC-CEBA-4D6A-A42E-CC1BBAAE98CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{17D130CE-BB21-4713-93E6-C22E2ACE274D}.Release|x64.Build.0 = Release|x64
 		{17D130CE-BB21-4713-93E6-C22E2ACE274D}.Release|x86.ActiveCfg = Release|Win32
 		{17D130CE-BB21-4713-93E6-C22E2ACE274D}.Release|x86.Build.0 = Release|Win32
+		{640B7DEC-CEBA-4D6A-A42E-CC1BBAAE98CF}.Debug|x64.ActiveCfg = Debug|x64
+		{640B7DEC-CEBA-4D6A-A42E-CC1BBAAE98CF}.Debug|x64.Build.0 = Debug|x64
+		{640B7DEC-CEBA-4D6A-A42E-CC1BBAAE98CF}.Debug|x86.ActiveCfg = Debug|Win32
+		{640B7DEC-CEBA-4D6A-A42E-CC1BBAAE98CF}.Debug|x86.Build.0 = Debug|Win32
+		{640B7DEC-CEBA-4D6A-A42E-CC1BBAAE98CF}.Release|x64.ActiveCfg = Release|x64
+		{640B7DEC-CEBA-4D6A-A42E-CC1BBAAE98CF}.Release|x64.Build.0 = Release|x64
+		{640B7DEC-CEBA-4D6A-A42E-CC1BBAAE98CF}.Release|x86.ActiveCfg = Release|Win32
+		{640B7DEC-CEBA-4D6A-A42E-CC1BBAAE98CF}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
