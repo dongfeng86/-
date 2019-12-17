@@ -1,69 +1,94 @@
 #include "CQueue.h"
 #include <iostream>
 #include"CCustomer.h"
+const int MIN_PER_HR = 60;
 
 bool IsAddQueue(double x);
 
 int main()
 {
 	const int iTotalTime = 600;
-	const int iInterval = 5;              //平均间隔为6分钟
+	const int iInterval = 6;              //平均间隔为6分钟
 	using namespace std;
-	//CQueue<int> queue(10);
-	//queue.Append(5);
-	//queue.Append(10);
-	//queue.Append(20);
-	//queue.Append(101);
-	//queue.Append(86);
-	//cout << queue.IsFull() << endl;
-	//cout << "原始数据为：" << endl;
-	//cout << queue << endl;
-	//cout << "如果弹出一个数据后：" << endl;
-	//int iRet;
-	//queue.Pop(iRet);
-	//cout << "弹出的数据为：" << iRet << endl;
-	//cout << "链表中剩下的数据为：" << queue << endl;
-	//queue.Pop(iRet);
-	//cout << "再次弹出一个数据：" << iRet << endl;
-	//cout << "链表中剩下的数据为: " << queue << endl;
 
-	CQueue<CCustomer> queue(20);                 //假设队列一共能够排20人
+	/*The srand function sets the starting point for generating a series of pseudorandom integers in the current thread.
+	srand 函数设置在当前线程中生成一系列伪随机整数的起点。这里一定注意是当前线程。
+	不管程序中出现多少个rand()函数，只要设定一次种子就可以了*/
+	srand((int)time(NULL));               
+
+	cout << "Case Study:Bank of Heather Automatic Teller\n";
+	cout << "Enter maimum size of queue:";
+	int qs;
+	cin >> qs;
+	
+	CQueue<CCustomer> queue(qs);                 //假设队列一共能够排qs人
+
+	cout << "Enter the number of simulation hours:";
+	int hours;
+	cin >> hours;
+	long lCycleLimit = MIN_PER_HR*hours;
+
+	cout << "Enter the arverage number of customers per hour:";
+	double dPerHour;
+	cin >> dPerHour;
+	double min_per_cust = MIN_PER_HR / dPerHour;
+
 	CCustomer cCustomer;
+	long lTurnaways = 0;
+	long lCustomers = 0;
+	long lServed = 0;
+	long lSumLine = 0;
+	int iWaitTime = 0;
+	long lLineWait = 0;
 
-	int iTotalNum=0;
-	double iTotalWaitTime=0;
-	//开始循环，看看队伍到底用了多长时间
-	int iProcess = 0;
-	for (int i = 0; i < iTotalTime; i++)
+	for (int cycle = 0; cycle < lCycleLimit; cycle++)
 	{
-		if (IsAddQueue(iInterval) && !queue.IsFull())
+		if (IsAddQueue(min_per_cust))
 		{
-			cCustomer.SetArrival(i);
-			queue.Append(cCustomer);
+			if (queue.IsFull())
+			{
+				lTurnaways++;
+			}
+			else
+			{
+				cCustomer.SetArrival(cycle);
+				queue.Append(cCustomer);
+				lCustomers++;
+			}
+
 		}
 
 		//上一用户是否完成
-		if (0 == iProcess)
+		if (0 == iWaitTime && !queue.IsEmpty())
 		{
-			if (!queue.IsEmpty())
-			{
-				queue.Pop(cCustomer);
-				iProcess = cCustomer.getProTime();
-				iTotalWaitTime += (i - cCustomer.GetArrivalTime() + cCustomer.getProTime());
-				iTotalNum++;
-			}
+			queue.Pop(cCustomer);
+			iWaitTime = cCustomer.getProTime();
+			lLineWait += cycle - cCustomer.GetArrivalTime()/* + cCustomer.getProTime()*/;
+			lServed++;
 		}
-		else
+		
+		if (iWaitTime > 0)
 		{
-			iProcess--;
+			iWaitTime--;
 		}
 
+		lSumLine += queue.GetLength();
 	}
 
-	cout << "来看看  " << iTotalTime << "分钟的模拟结果：" << endl;
-	cout << "模拟总长\t" << "处理总人数\t" << "平均等待时间" << endl;
-	cout <<  iTotalWaitTime << "\t\t" << iTotalNum << "\t\t\t" << (iTotalWaitTime / iTotalNum) << endl;
-
+	if (lCustomers > 0)
+	{
+		cout << "customers accepted:" << lCustomers << endl;
+		cout << "  customers served:" << lServed << endl;
+		cout << "         turnaways:" << lTurnaways << endl;
+		cout << "average queue size:";
+		cout.precision(2);
+		cout.setf(ios_base::fixed, ios_base::floatfield);
+		cout << (double)lSumLine / lCycleLimit << endl;
+		cout << "average wait time:" << (double)lLineWait / lServed << " minutes\n";
+	}
+	else
+		cout << "No customers!\n";
+	cout << "Done!\n";
 	return 0;
 }
 

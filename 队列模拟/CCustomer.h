@@ -31,8 +31,7 @@ inline void CCustomer::SetArrival(long lArrival)
 inline void CCustomer::SetProTime()
 {
 	//平均每个人用时三分钟，可能的区间在1~3分钟之间。这个地方还有点糊涂
-	srand((int)time(NULL));
-	m_iProcessTime = rand() % 6+1;
+	m_iProcessTime = rand() % 3+1;
 }
 
 inline int CCustomer::getProTime()

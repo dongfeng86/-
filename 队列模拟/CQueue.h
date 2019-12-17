@@ -40,15 +40,17 @@ template<class T>
 CQueue<T>::CQueue(int iSize /*= 10*/)
 	:iMaxLength(iSize)
 {
-	pFront = pRear = nullptr;
+	pFront = pRear = NULL;
+	iLength = 0;
 }
 
 template<class T>
 inline CQueue<T>::~CQueue()
 {
+	SNode * pTemp;               //原操作中用到的变量最好在循环操作以外定义，否则降低效率
 	while (pFront != nullptr)
 	{
-		SNode * pTemp = pFront;
+		pTemp = pFront;
 		pFront = pFront->pNext;
 		delete pTemp;
 	}
@@ -102,13 +104,13 @@ int CQueue<T>::GetLength()
 template<class T>
 bool CQueue<T>::IsEmpty()
 {
-	return (iLength <= 0) ? true : false;
+	return iLength <= 0 ;          //原来为return (iLength <= 0) ? true : false;，太繁琐了
 }
 
 template<class T>
 bool CQueue<T>::IsFull()
 {
-	return (iLength >= iMaxLength) ? true : false;
+	return iLength >= iMaxLength;        //原来为 return (iLength >= iMaxLength) ? true : false;  太繁琐了
 }
 
 template<class T>
