@@ -104,13 +104,13 @@ int CQueue<T>::GetLength()
 template<class T>
 bool CQueue<T>::IsEmpty()
 {
-	return iLength <= 0 ;          //原来为return (iLength <= 0) ? true : false;，太繁琐了
+	return iLength <= 0 ;          //原来为return (iLength <= 0) ? true : false;，太繁琐了；关系运算符本身就会返回bool值
 }
 
 template<class T>
 bool CQueue<T>::IsFull()
 {
-	return iLength >= iMaxLength;        //原来为 return (iLength >= iMaxLength) ? true : false;  太繁琐了
+	return iLength >= iMaxLength;        //原来为 return (iLength >= iMaxLength) ? true : false;  太繁琐了；关系运算符本身就会返回bool值
 }
 
 template<class T>

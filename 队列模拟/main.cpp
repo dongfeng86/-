@@ -7,8 +7,6 @@ bool IsAddQueue(double x);
 
 int main()
 {
-	const int iTotalTime = 600;
-	const int iInterval = 6;              //平均间隔为6分钟
 	using namespace std;
 
 	/*The srand function sets the starting point for generating a series of pseudorandom integers in the current thread.

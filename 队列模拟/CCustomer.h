@@ -7,7 +7,6 @@ class CCustomer
 {
 private:
 	long m_lArrivalTime;
-	long m_lLeaveTime;
 	int m_iProcessTime;
 public:
 	CCustomer();
@@ -19,7 +18,7 @@ public:
 
 inline CCustomer::CCustomer()
 {
-	m_lArrivalTime = m_lLeaveTime =0;
+	m_lArrivalTime =0;
 	SetProTime();
 }
 
@@ -31,7 +30,7 @@ inline void CCustomer::SetArrival(long lArrival)
 inline void CCustomer::SetProTime()
 {
 	//平均每个人用时三分钟，可能的区间在1~3分钟之间。这个地方还有点糊涂
-	m_iProcessTime = rand() % 3+1;
+	m_iProcessTime = rand() % 6+1;
 }
 
 inline int CCustomer::getProTime()

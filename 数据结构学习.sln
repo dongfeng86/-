@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "顺序表", "顺序表\顺�
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "队列模拟", "队列模拟\队列模拟.vcxproj", "{640B7DEC-CEBA-4D6A-A42E-CC1BBAAE98CF}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KMP算法", "KMP算法\KMP算法.vcxproj", "{7A121E18-EE3F-4BC5-8E28-0F803DBAC569}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,14 @@ Global
 		{640B7DEC-CEBA-4D6A-A42E-CC1BBAAE98CF}.Release|x64.Build.0 = Release|x64
 		{640B7DEC-CEBA-4D6A-A42E-CC1BBAAE98CF}.Release|x86.ActiveCfg = Release|Win32
 		{640B7DEC-CEBA-4D6A-A42E-CC1BBAAE98CF}.Release|x86.Build.0 = Release|Win32
+		{7A121E18-EE3F-4BC5-8E28-0F803DBAC569}.Debug|x64.ActiveCfg = Debug|x64
+		{7A121E18-EE3F-4BC5-8E28-0F803DBAC569}.Debug|x64.Build.0 = Debug|x64
+		{7A121E18-EE3F-4BC5-8E28-0F803DBAC569}.Debug|x86.ActiveCfg = Debug|Win32
+		{7A121E18-EE3F-4BC5-8E28-0F803DBAC569}.Debug|x86.Build.0 = Debug|Win32
+		{7A121E18-EE3F-4BC5-8E28-0F803DBAC569}.Release|x64.ActiveCfg = Release|x64
+		{7A121E18-EE3F-4BC5-8E28-0F803DBAC569}.Release|x64.Build.0 = Release|x64
+		{7A121E18-EE3F-4BC5-8E28-0F803DBAC569}.Release|x86.ActiveCfg = Release|Win32
+		{7A121E18-EE3F-4BC5-8E28-0F803DBAC569}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
